@@ -1,5 +1,16 @@
 # ESG-Oriented-Microalgae-PV-LCA-System-for-Renewable-Biofuel-includes-GenAI
 
+
+## System Overview
+
+This system integrates **Microalgae Process**, **PV/Energy System**, **Life Cycle Assessment (LCA) System**, **Database Platform**, and **GenAI System** into a unified architecture.
+
+- **Process**: Converts microalgae biomass into fuel-grade oil and by-products.  
+- **PV/Energy System**: Supplies electricity to the process and infrastructure, while enabling energy monitoring.  
+- **LCA System**: Quantifies environmental impacts across all stages, generating key sustainability indicators.  
+- **Database Platform**: Collects, normalizes, and manages time-series data, inventory records, and results.  
+- **GenAI System**: Connects all layers, supporting queries, explanations, automated reporting, and fault guidance.  
+
 <img width="1544" height="852" alt="image" src="https://github.com/user-attachments/assets/fbe88069-981b-4b7e-9fc4-bf9e51c7a80c" />
 
 ```mermaid
@@ -89,6 +100,125 @@ flowchart LR
 
 
 ```
+
+
+# System Architecture Details
+
+## Process (Microalgae → Fuel/SAF)
+
+**Role**  
+Convert wet microalgae biomass into fuel-grade algal oil and recover by-products.
+
+**Inputs / Outputs**  
+- Inputs: biomass slurry, water, enzymes/chemicals, heat, electricity.  
+- Outputs: fuel-grade algal oil (distillate fractions), impurities (salts, metals, phosphorus, chloride), algal cake, recyclable water.  
+
+**Monitored Parameters**  
+- Cell disruption: motor load, pH, conductivity.  
+- Phase separation: interface level, flow rates.  
+- Distillation: tray/packing temperatures, tower pressure, reflux ratio, product composition.  
+- Membrane/filtration: transmembrane pressure, flux, turbidity, pump power.
+
+**Database Tables**  
+- `fact_process_timeseries` – process sensors (P/T/F/quality).  
+- `fact_material_flow` – material/energy flows.  
+- `dim_process_step`, `dim_equipment`.  
+
+**KPIs**  
+Conversion yield, specific energy use (kWh/MJ), distillation energy demand, membrane flux, water reuse rate.
+
+---
+
+## PV / Energy System
+
+**Role**  
+Hybrid PV supply with battery and grid interface.
+
+**Flow**  
+PV modules → combiner box → hybrid inverter → load / battery / grid.
+
+**Measurements**  
+String voltages/currents, inverter AC power, battery SoC, grid import/export, irradiance, module temperature.
+
+**Database Tables**  
+- `fact_energy_timeseries` – PV, grid, battery, load.  
+- `fact_pv_allocation` – PV share (α), grid share, battery losses.  
+- `dim_string`, `dim_inverter`, `dim_meter`, `dim_envsensor`.  
+
+**KPIs**  
+Performance ratio (PR), PV fraction α, self-consumption, self-sufficiency, battery roundtrip efficiency, inverter efficiency.
+
+---
+
+## LCA System
+
+**Role**  
+Life cycle evaluation of the algal oil pathway.
+
+**Scope**  
+System boundary: pretreatment, separation, distillation, residue treatment, energy supply.  
+Functional unit: 1 MJ fuel-grade algal oil.  
+
+**Inventory (LCI)**  
+- Inputs from process (energy, chemicals, water, materials).  
+- Background data (emission factors, material/energy production).  
+
+**Impact Assessment (LCIA)**  
+- Indicators: GWP, CED, ecotoxicity, acidification/eutrophication, EPBT/EROI.  
+- Scenarios: PV share α, heat source (gas/electric/steam), H₂ origin (grey/green), water reuse fraction.  
+
+**Database Tables**  
+- `fact_runs` – boundary, method, scenario.  
+- `fact_lci` – inventory results.  
+- `fact_lcia` – impact results.  
+
+**Outputs**  
+Hotspot breakdowns, sensitivity tornado charts, Monte Carlo uncertainty ranges.
+
+---
+
+## Database / Data Platform
+
+**Layers**  
+- **Ingestion** – APIs, MQTT, OPC-UA.  
+- **Raw zone** – append-only time series.  
+- **Staging / ETL** – unit normalization, time alignment, anomaly flags.  
+- **Warehouse / Data marts** – star schema (facts/dims).  
+- **Feature Store** – windowed features, lag stats, environmental joins.  
+- **Results** – LCIA, predictions, reports.  
+- **Access** – views, APIs.  
+
+**Core Fact Tables**  
+- `fact_process_timeseries`, `fact_energy_timeseries`, `fact_material_flow`, `fact_pv_allocation`, `fact_lci`, `fact_lcia`, `pred_pv_power`, `events_alarms`.  
+
+**Dimension Tables**  
+- `dim_equipment`, `dim_point`, `dim_process_step`, `dim_emission_factor`, `dim_method`.
+
+---
+
+## GenAI System
+
+**Functions**  
+- CRUD queries: NL → SQL for tables/plots.  
+- Reporting: structured LCA/energy/process reports.  
+- SOP/Q&A: retrieve standards and manuals (RAG).  
+- Fault guide: diagnostics + repair steps from monitoring data.  
+- Training: convert events into training modules.
+
+**Models**  
+- Current: LSTM (time-series prediction), CNN (image/quality detection).  
+- Attribution: weather, pollution, maintenance logs → cause analysis.  
+- Future: Transformer, TabNet, RL for optimization.  
+- RLHF: operator feedback loop to refine outputs.
+
+**Data Interface**  
+- **Read**: `Warehouse`, `Feature Store`, `Results`.  
+- **Write**: `Results` (reports, interpretations, tasks).  
+- **Bidirectional**: link with Monitoring for alarms and diagnostics.
+
+**KPIs**  
+Prediction accuracy, explanation relevance, maintenance efficiency, training adoption.
+
 
 <img width="1142" height="464" alt="image" src="https://github.com/user-attachments/assets/01d29b1b-a4a5-42da-b59f-04bd5975b2a8" />
 
