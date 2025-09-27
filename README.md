@@ -1,8 +1,6 @@
 # ESG-Oriented-Microalgae-PV-LCA-System-for-Renewable-Biofuel-includes-GenAI
 
-<img width="1543" height="850" alt="image" src="https://github.com/user-attachments/assets/1f9e2322-e102-4320-bf18-cd4f6a14869b" />
-
-<img width="1142" height="464" alt="image" src="https://github.com/user-attachments/assets/01d29b1b-a4a5-42da-b59f-04bd5975b2a8" />
+<img width="1544" height="852" alt="image" src="https://github.com/user-attachments/assets/fbe88069-981b-4b7e-9fc4-bf9e51c7a80c" />
 
 ```mermaid
 flowchart LR
@@ -91,6 +89,8 @@ flowchart LR
 
 
 ```
+
+<img width="1142" height="464" alt="image" src="https://github.com/user-attachments/assets/01d29b1b-a4a5-42da-b59f-04bd5975b2a8" />
 
 # Microalgae Oil Conversion and By-product Processing
 
