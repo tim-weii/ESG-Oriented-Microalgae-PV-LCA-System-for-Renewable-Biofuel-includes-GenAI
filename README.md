@@ -3,9 +3,6 @@
 
 <img width="1142" height="464" alt="image" src="https://github.com/user-attachments/assets/01d29b1b-a4a5-42da-b59f-04bd5975b2a8" />
 
-<img width="476" height="251" alt="image" src="https://github.com/user-attachments/assets/711ee56d-d5d2-40db-968a-3b94634eef72" />
-
-
 # Microalgae Oil Conversion and By-product Processing
 
 ## Pretreatment & Cell Disruption
@@ -34,6 +31,7 @@ This closed-loop pathway enables both energy recovery and by-product valorizatio
 ---
 
 # Life Cycle Assessment (LCA) of the Algal Oil Conversion System
+<img width="476" height="251" alt="image" src="https://github.com/user-attachments/assets/711ee56d-d5d2-40db-968a-3b94634eef72" />
 
 ## 1. Goal and Scope Definition
 - **Goal**: To evaluate the environmental impacts of the algal oil production pathway from cultivation to fuel conversion.  
