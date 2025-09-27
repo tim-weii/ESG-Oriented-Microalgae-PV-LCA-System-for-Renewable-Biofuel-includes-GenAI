@@ -65,7 +65,7 @@ flowchart LR
   subgraph AI[AI Layer]
     GENAI[GenAI<br/>CRUD • reporting • SOP/Q&A • fault guide]
     RLHF[RLHF feedback]
-    ML[ML/DL<br/>LSTM • CNN • Transformer • TabNet • RL]
+    ML[ML/DL<br/>LSTM • CNN • Transformer • RL]
     RLHF --> GENAI
   end
 
@@ -208,7 +208,7 @@ Hotspot breakdowns, sensitivity tornado charts, Monte Carlo uncertainty ranges.
 **Models**  
 - Current: LSTM (time-series prediction), CNN (image/quality detection).  
 - Attribution: weather, pollution, maintenance logs → cause analysis.  
-- Future: Transformer, TabNet, RL for optimization.  
+- Future: Transformer, RL for optimization.  
 - RLHF: operator feedback loop to refine outputs.
 
 **Data Interface**  
