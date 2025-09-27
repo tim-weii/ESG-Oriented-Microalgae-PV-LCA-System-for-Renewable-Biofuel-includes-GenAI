@@ -4,6 +4,7 @@
 
 <img width="1142" height="464" alt="image" src="https://github.com/user-attachments/assets/01d29b1b-a4a5-42da-b59f-04bd5975b2a8" />
 
+```mermaid
 flowchart LR
   %% === Physical / Process ===
   subgraph PROC[Process: Microalgae → Fuel/SAF]
