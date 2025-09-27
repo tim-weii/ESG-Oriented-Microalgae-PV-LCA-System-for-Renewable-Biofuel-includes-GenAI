@@ -1,7 +1,94 @@
 # ESG-Oriented-Microalgae-PV-LCA-System-for-Renewable-Biofuel-includes-GenAI
 
+<img width="1543" height="850" alt="image" src="https://github.com/user-attachments/assets/1f9e2322-e102-4320-bf18-cd4f6a14869b" />
 
 <img width="1142" height="464" alt="image" src="https://github.com/user-attachments/assets/01d29b1b-a4a5-42da-b59f-04bd5975b2a8" />
+
+flowchart LR
+  %% === Physical / Process ===
+  subgraph PROC[Process: Microalgae → Fuel/SAF]
+    PR1[Pretreatment / Disruption]
+    PR2[Phase Separation]
+    PR3[Distillation / Upgrading]
+    PR4[Membrane & Dewatering]
+    PR1 --> PR2 --> PR3 --> PR4
+  end
+
+  %% === PV / Energy ===
+  subgraph PV[PV / Energy System]
+    PV1[PV Modules]
+    PV2[Combiner Box]
+    PV3[Hybrid Inverter<br/>(Grid/Battery/Load)]
+    PV1 --> PV2 --> PV3
+  end
+
+  %% === Monitoring (independent, also used by GenAI) ===
+  subgraph MON[Monitoring Layer]
+    SENS[(Process/Power/Env Sensors)]
+    EDGE[Edge Gateway<br/>MQTT / OPC-UA]
+    QCHECK[Data Quality<br/>(units, ts, gaps, flags)]
+    SENS --> EDGE --> QCHECK
+  end
+
+  %% === Data Platform ===
+  subgraph DP[Database / Data Platform]
+    INGEST[Ingestion]
+    RAW[(Raw)]
+    STG[Staging / ETL]
+    WH[(Warehouse / Data Marts)]
+    FEAT[(Feature Store)]
+    RES[(Results: LCIA, Predictions, Reports)]
+    INGEST --> RAW --> STG --> WH
+    WH --> FEAT
+    WH --> RES
+  end
+
+  %% === LCA System ===
+  subgraph LCA[LCA System]
+    L1[LCI]
+    L2[LCIA (ReCiPe/GWP/CED)]
+    L3[Interpretation]
+    L1 --> L2 --> L3
+  end
+
+  %% === AI Layer ===
+  subgraph AI[AI Layer]
+    GENAI[GenAI<br/>CRUD • reporting • SOP/Q&A • fault guide]
+    RLHF[(RLHF feedback)]
+    ML[ML/DL<br/>LSTM • CNN • (Transformer/TabNet/RL ready)]
+    RLHF --> GENAI
+  end
+
+  %% === Apps ===
+  APP[Dashboards / API / Webhooks]
+
+  %% === Flows ===
+  %% Monitoring feeds the platform
+  QCHECK --> INGEST
+
+  %% Process & PV -> Monitoring sensors
+  PR1 -.data.-> SENS
+  PR2 -.data.-> SENS
+  PR3 -.data.-> SENS
+  PR4 -.data.-> SENS
+  PV3 -.power/env.-> SENS
+
+  %% LCA and AI consume platform data
+  WH --> L1
+  FEAT --> ML --> RES
+  WH --> GENAI --> RES
+
+  %% Monitoring knowledge used by GenAI (diagnostics / training)
+  MON <-- uses / augments --> GENAI
+
+  %% LCA results persist
+  L3 --> RES
+
+  %% Expose to apps
+  WH --> APP
+  RES --> APP
+
+```
 
 # Microalgae Oil Conversion and By-product Processing
 
