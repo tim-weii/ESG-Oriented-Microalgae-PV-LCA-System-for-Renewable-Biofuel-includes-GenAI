@@ -19,26 +19,26 @@ flowchart LR
   subgraph PV[PV / Energy System]
     PV1[PV Modules]
     PV2[Combiner Box]
-    PV3[Hybrid Inverter<br/>(Grid/Battery/Load)]
+    PV3[Hybrid Inverter<br/>Grid / Battery / Load]
     PV1 --> PV2 --> PV3
   end
 
   %% === Monitoring (independent, also used by GenAI) ===
   subgraph MON[Monitoring Layer]
-    SENS[(Process/Power/Env Sensors)]
+    SENS[Process / Power / Env Sensors]
     EDGE[Edge Gateway<br/>MQTT / OPC-UA]
-    QCHECK[Data Quality<br/>(units, ts, gaps, flags)]
+    QCHECK[Data Quality<br/>units • ts • gaps • flags]
     SENS --> EDGE --> QCHECK
   end
 
   %% === Data Platform ===
   subgraph DP[Database / Data Platform]
     INGEST[Ingestion]
-    RAW[(Raw)]
+    RAW[Raw Zone]
     STG[Staging / ETL]
-    WH[(Warehouse / Data Marts)]
-    FEAT[(Feature Store)]
-    RES[(Results: LCIA, Predictions, Reports)]
+    WH[Warehouse / Data Marts]
+    FEAT[Feature Store]
+    RES[Results: LCIA • Predictions • Reports]
     INGEST --> RAW --> STG --> WH
     WH --> FEAT
     WH --> RES
@@ -47,7 +47,7 @@ flowchart LR
   %% === LCA System ===
   subgraph LCA[LCA System]
     L1[LCI]
-    L2[LCIA (ReCiPe/GWP/CED)]
+    L2[LCIA: ReCiPe / GWP / CED]
     L3[Interpretation]
     L1 --> L2 --> L3
   end
@@ -55,8 +55,8 @@ flowchart LR
   %% === AI Layer ===
   subgraph AI[AI Layer]
     GENAI[GenAI<br/>CRUD • reporting • SOP/Q&A • fault guide]
-    RLHF[(RLHF feedback)]
-    ML[ML/DL<br/>LSTM • CNN • (Transformer/TabNet/RL ready)]
+    RLHF[RLHF feedback]
+    ML[ML/DL<br/>LSTM • CNN • Transformer • TabNet • RL]
     RLHF --> GENAI
   end
 
@@ -88,6 +88,7 @@ flowchart LR
   %% Expose to apps
   WH --> APP
   RES --> APP
+
 
 ```
 
