@@ -1,5 +1,14 @@
 # ESG-Oriented-Microalgae-PV-LCA-System-for-Renewable-Biofuel-includes-GenAI
 
+[![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)](https://www.python.org/) 
+[![IoT](https://img.shields.io/badge/IoT-Devices-green?logo=internetofthings)](https://en.wikipedia.org/wiki/Internet_of_things) 
+[![ESP32](https://img.shields.io/badge/ESP32-Module-lightgrey?logo=espressif)](https://www.espressif.com/en/products/socs/esp32) 
+[![LoRa](https://img.shields.io/badge/LoRa-Communication-blueviolet?logo=loRa)](https://lora-alliance.org/) 
+[![Solar](https://img.shields.io/badge/Solar-Power-yellow?logo=solarpower)](https://en.wikipedia.org/wiki/Solar_power) 
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?logo=mysql)](https://www.mysql.com/) 
+[![Qdrant](https://img.shields.io/badge/Qdrant-VectorDB-orange?logo=qdrant)](https://qdrant.tech/) 
+[![Neo4j](https://img.shields.io/badge/Neo4j-GraphDB-008CC1?logo=neo4j)](https://neo4j.com/) 
+
 ## System Overview
 
 整合 **Microalgae Process**、**PV/Energy System**、**Life Cycle Assessment (LCA) System**、**Database Platform** 與 **GenAI System**的系統。
