@@ -14,7 +14,7 @@
 整合 **Microalgae Process**、**PV/Energy System**、**Life Cycle Assessment (LCA) System**、**Database Platform** 與 **GenAI System**的系統。
 
 - **Process**：從微藻到生質燃油和副產品的過程。  
-- **PV System**：基礎設施供電，同時進行能源監控管理。  
+- **PV System**：基礎設施供電，同時進行能耗監控管理。  
 - **LCA System**：評估Process與PV system的流程對生態環境、人體健康和資源的影響。  
 - **Database**：蒐集Process與PV system資料，管理所有模型的狀態、數值資料、盤查紀錄與結果等，進行處理後，作為ML/DL的資料來源，LCA system 也會使用此資料進行評估。  
 - **GenAI System**：系統連接所有層，可查看每層的狀態，將LCA system的結果、PV system的異常等問題轉換為自然語言進行解釋、報告生成與故障診斷，甚至用於所有系統的操作教學與維修指導。  
